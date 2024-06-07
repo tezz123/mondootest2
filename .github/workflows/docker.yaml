@@ -3,6 +3,7 @@ name: Docker image build
 on:
   repository_dispatch:
   workflow_dispatch:  # for manual testing
+  push: # for testing
 
 jobs:
   docker-build-and-push:
