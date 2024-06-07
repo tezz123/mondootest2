@@ -54,3 +54,10 @@ jobs:
           cmd: yq --inplace '.image.tag = "${{ inputs.tag }}"' helm/values.yaml
       - name: Helm Lint
         run: helm lint helm
+      - name: Commit back to git
+        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5  # v9.1.4
+        with:
+          author_name: Pavo
+          author_email: foo@bar.com
+          message: "Update version to {{ inputs.tag }}"
+          add: "helm/values.yaml"
