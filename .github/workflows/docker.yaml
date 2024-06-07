@@ -25,6 +25,7 @@ jobs:
           chmod: 0755
           rename-to: mondoohelloworld
           tag: ${{ inputs.tag }}
+      - run: mv /opt/hostedtoolcache/tezz123/mondootest/latest/linux-amd64/mondoohelloworld-linux-amd64 mondoohelloworld
       - name: Docker metadata
         uses: docker/metadata-action@v5.5.1
         id: metadata
