@@ -2,7 +2,11 @@ name: Docker image build
 
 on:
   repository_dispatch:
-  workflow_dispatch:  # for manual testing
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'GH Release Tag'
+        required: true
   push: # for testing
 
 jobs:
@@ -20,6 +24,7 @@ jobs:
           arch: x86_64
           chmod: 0755
           rename-to: mondoohelloworld
+          tag: ${{ inputs.tag }}
       - name: Docker metadata
         uses: docker/metadata-action@v5.5.1
         id: metadata
