@@ -48,8 +48,8 @@ jobs:
           tags: ghcr.io/tezz123/mondootest2:${{ inputs.tag }}
           labels: ${{ steps.metadata.outputs.labels }}
       - name: Update Image Tag
-        uses: uses: mikefarah/yq@4cc646b16b481a305c45e5eafa920c03c77565ea  # 4.44.1
-        run: |
-          yq --inplace '.image.tag = "${{ inputs.tag }}"' helm/values.yaml
+        uses: mikefarah/yq@4cc646b16b481a305c45e5eafa920c03c77565ea  # 4.44.1
+        with:
+          cmd: yq --inplace '.image.tag = "${{ inputs.tag }}"' helm/values.yaml
       - name: Helm Lint
         run: helm lint helm
