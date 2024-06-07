@@ -7,7 +7,6 @@ on:
       tag:
         description: 'GH Release Tag'
         required: true
-  push: # for testing
 
 jobs:
   docker-build-and-push:
