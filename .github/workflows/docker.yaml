@@ -21,7 +21,7 @@ jobs:
           repo: tezz123/mondootest
           extension-matching: false
           platform: linux
-          arch: x86_64
+          arch: amd64
           chmod: 0755
           rename-to: mondoohelloworld
           tag: ${{ inputs.tag }}
