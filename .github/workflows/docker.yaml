@@ -24,7 +24,8 @@ jobs:
           chmod: 0755
           rename-to: mondoohelloworld
           tag: ${{ inputs.tag }}
-      - run: tree /opt/hostedtoolcache/tezz123/mondootest/
+      - name: move the binary
+        run: mv /opt/hostedtoolcache/tezz123/mondootest/${{ inputs.tag }}/linux-amd64/mondoohelloworld-linux-amd64 mondoohelloworld
       - name: Docker metadata
         uses: docker/metadata-action@v5.5.1
         id: metadata
