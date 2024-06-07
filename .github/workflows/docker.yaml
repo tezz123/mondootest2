@@ -16,9 +16,10 @@ jobs:
         with:
           repo: tezz123/mondootest
           extension-matching: false
-      - name: Make executable executable
-        run: |
-          chmod +x  mondoohelloworld
+          platform: linux
+          arch: x86_64
+          chmod: 0755
+          rename-to: mondoohelloworld
       - name: Docker metadata
         uses: docker/metadata-action@v5.5.1
         id: metadata
