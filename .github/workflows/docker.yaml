@@ -15,6 +15,7 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@25d5e2dd555cd74f1fab9ac1e6ea117acde2c0c4  # v1.10.0
         with:
           repo: tezz123/mondootest
+          extension-matching: false
       - name: Make executable executable
         run: |
           chmod +x  mondoohelloworld
