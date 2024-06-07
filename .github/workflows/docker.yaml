@@ -24,7 +24,7 @@ jobs:
           chmod: 0755
           rename-to: mondoohelloworld
           tag: ${{ inputs.tag }}
-      - run: mv /opt/hostedtoolcache/tezz123/mondootest/latest/linux-amd64/mondoohelloworld-linux-amd64 mondoohelloworld
+      - run: tree /opt/hostedtoolcache/tezz123/mondootest/
       - name: Docker metadata
         uses: docker/metadata-action@v5.5.1
         id: metadata
@@ -45,5 +45,11 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.metadata.outputs.tags }}
+          tags: ghcr.io/tezz123/mondootest2:${{ inputs.tag }}
           labels: ${{ steps.metadata.outputs.labels }}
+      - name: Update Image Tag
+        uses: uses: mikefarah/yq@4cc646b16b481a305c45e5eafa920c03c77565ea  # 4.44.1
+        run: |
+          yq --inplace '.image.tag = "${{ inputs.tag }}"' helm/values.yaml
+      - name: Helm Lint
+        run: helm lint helm
